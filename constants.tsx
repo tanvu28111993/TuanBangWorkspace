@@ -1,22 +1,24 @@
 import React from 'react';
 
-const Icon: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+// --- Helpers ---
+const IconWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <div className="w-12 h-12 flex items-center justify-center">{children}</div>
 );
 
-// --- Sub-App Icons (Material Symbols) ---
-const MaterialsIcon = () => <span className="material-symbols-outlined text-4xl">inventory_2</span>;
-const WebWarehouseIcon = () => <span className="material-symbols-outlined text-4xl">desktop_windows</span>;
-const MobileWarehouseIcon = () => <span className="material-symbols-outlined text-4xl">install_mobile</span>;
-const MobileAuditIcon = () => <span className="material-symbols-outlined text-4xl">fact_check</span>;
+const Symbol = ({ name, size = "text-4xl" }: { name: string; size?: string }) => (
+  <span className={`material-symbols-outlined ${size}`}>{name}</span>
+);
 
 // --- App Configuration / Links ---
-// Centralized location for all application links to make editing easier
 export const APP_LINKS = {
   MATERIALS: '#',
-  PAPER_AUDIT: 'https://script.google.com/macros/s/AKfycbwkppC48oyefMpwM-Xk29MG7-OWIkuJNi6bxfVZ-6cja1m7FQPLwV5TslfA3DZfjjRI/exec',
+  PAPER_AUDIT: 'https://tuan-bang-workspace.vercel.app/',
   PAPER_WAREHOUSE_WEB: '#',
   PAPER_WAREHOUSE_APP: '#',
+  // R&D Links
+  RND_DESIGN: '#',
+  RND_SAMPLE: '#',
+  RND_MOLD: '#',
 };
 
 export interface App {
@@ -40,13 +42,13 @@ export const WORKSPACE_ITEMS: WorkspaceItem[] = [
     title: 'Quản Lý',
     description: 'ĐIỀU HÀNH & GIÁM SÁT',
     icon: (
-      <Icon>
-        <span className="material-symbols-outlined text-5xl">manage_accounts</span>
-      </Icon>
+      <IconWrapper>
+        <Symbol name="manage_accounts" size="text-5xl" />
+      </IconWrapper>
     ),
     apps: [
-        { id: 'materials', title: 'Quản lý vật tư', icon: <MaterialsIcon />, href: APP_LINKS.MATERIALS },
-        { id: 'mobile-audit', title: 'Kiểm kê giấy', icon: <MobileAuditIcon />, href: APP_LINKS.PAPER_AUDIT },
+        { id: 'materials', title: 'Quản lý vật tư', icon: <Symbol name="inventory_2" />, href: APP_LINKS.MATERIALS },
+        { id: 'mobile-audit', title: 'Kiểm kê giấy', icon: <Symbol name="fact_check" />, href: APP_LINKS.PAPER_AUDIT },
     ]
   },
   {
@@ -54,13 +56,28 @@ export const WORKSPACE_ITEMS: WorkspaceItem[] = [
     title: 'Nghiệp Vụ Kho',
     description: 'VẬN HÀNH & KIỂM SOÁT',
     icon: (
-      <Icon>
-        <span className="material-symbols-outlined text-5xl">forklift</span>
-      </Icon>
+      <IconWrapper>
+        <Symbol name="forklift" size="text-5xl" />
+      </IconWrapper>
     ),
     apps: [
-        { id: 'web-warehouse', title: 'Kho giấy Web', icon: <WebWarehouseIcon />, href: APP_LINKS.PAPER_WAREHOUSE_WEB },
-        { id: 'mobile-warehouse', title: 'Kho giấy App', icon: <MobileWarehouseIcon />, href: APP_LINKS.PAPER_WAREHOUSE_APP },
+        { id: 'web-warehouse', title: 'Kho giấy Web', icon: <Symbol name="desktop_windows" />, href: APP_LINKS.PAPER_WAREHOUSE_WEB },
+        { id: 'mobile-warehouse', title: 'Kho giấy App', icon: <Symbol name="install_mobile" />, href: APP_LINKS.PAPER_WAREHOUSE_APP },
+    ]
+  },
+  {
+    id: 'rnd',
+    title: 'R&D',
+    description: 'NGHIÊN CỨU & PHÁT TRIỂN',
+    icon: (
+      <IconWrapper>
+        <Symbol name="science" size="text-5xl" />
+      </IconWrapper>
+    ),
+    apps: [
+        { id: 'rnd-design', title: 'Thiết Kế', icon: <Symbol name="draw" />, href: APP_LINKS.RND_DESIGN },
+        { id: 'rnd-sample', title: 'Mẫu', icon: <Symbol name="content_cut" />, href: APP_LINKS.RND_SAMPLE },
+        { id: 'rnd-mold', title: 'Khuôn', icon: <Symbol name="grid_on" />, href: APP_LINKS.RND_MOLD },
     ]
   },
 ];
