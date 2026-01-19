@@ -80,28 +80,37 @@ const App: React.FC = () => {
             </div>
         </header>
 
-        <main className="w-full max-w-6xl flex flex-col items-center justify-center flex-grow text-center my-8 sm:my-12">
-            <div className="animate-fade-in mb-12">
+        <main className="w-full max-w-7xl flex flex-col items-center justify-center flex-grow text-center my-8 sm:my-12">
+            <div className="animate-fade-in mb-12 flex flex-col items-center">
                 <div className="inline-block mb-3 px-4 py-1 bg-white/10 rounded-full text-sm font-medium text-white/80 border border-white/10 backdrop-blur-sm">
                     {getGreeting()}, Chúc bạn làm việc hiệu quả
                 </div>
-                <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 drop-shadow-sm">
+                <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60 drop-shadow-sm text-center">
                 PTB TUAN BANG WORKSPACE
                 </h1>
-                <div className="w-24 h-1 bg-[#DA291C] mx-auto rounded-full shadow-[0_0_10px_#DA291C]"></div>
+                <div className="w-[160px] md:w-[240px] lg:w-[360px] h-1 bg-[#DA291C] rounded-full shadow-[0_0_10px_#DA291C]"></div>
             </div>
             
             <div className="w-full px-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 w-full max-w-4xl mx-auto animate-fade-in" style={{animationDelay: '0.1s'}}>
-                {WORKSPACE_ITEMS.map((item) => (
-                    <WorkspaceCard
-                    key={item.id}
-                    icon={item.icon}
-                    title={item.title}
-                    description={item.description}
-                    onClick={() => setActiveCategory(item.id)}
-                    />
-                ))}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl mx-auto animate-fade-in" style={{animationDelay: '0.1s'}}>
+                {WORKSPACE_ITEMS.map((item) => {
+                    const isManagement = item.id === 'management';
+                    return (
+                        <div 
+                            key={item.id}
+                            className={isManagement ? 'col-span-1 sm:col-span-2 lg:col-span-3 flex justify-center' : ''}
+                        >
+                            <div className={isManagement ? 'w-full max-w-md' : 'w-full h-full'}>
+                                <WorkspaceCard
+                                    icon={item.icon}
+                                    title={item.title}
+                                    description={item.description}
+                                    onClick={() => setActiveCategory(item.id)}
+                                />
+                            </div>
+                        </div>
+                    );
+                })}
                 </div>
             </div>
         </main>
