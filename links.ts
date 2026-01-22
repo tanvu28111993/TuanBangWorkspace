@@ -2,6 +2,7 @@ export const APP_LINKS = {
   // --- QUẢN LÝ (MANAGEMENT) ---
   MANAGEMENT_MATERIALS: '#',
   MANAGEMENT_RND: '#',
+  MANAGEMENT_PROGRESS: '#',
 
   // --- NGHIỆP VỤ KHO (WAREHOUSE) ---
   // Kho Giấy
@@ -25,6 +26,7 @@ export const APP_LINKS = {
   // --- KẾ HOẠCH (PLANNING) ---
   PLANNING_SCHEDULE: '#',
   PLANNING_ORDER: '#',
+  PLANNING_PROGRESS: '#',
 
   // --- NHÀ MÁY 1 (FACTORY 1) ---
   FACTORY1_PLANNING: '#',

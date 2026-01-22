@@ -21,12 +21,39 @@ const AppCard: React.FC<AppCardProps> = ({ icon, title, href }) => (
 const App: React.FC = () => {
   const [time, setTime] = useState(new Date());
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
 
   useEffect(() => {
     const timerId = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(timerId);
+    
+    // PWA Install Prompt Logic
+    const handleBeforeInstallPrompt = (e: any) => {
+      // Prevent the mini-infobar from appearing on mobile
+      e.preventDefault();
+      // Stash the event so it can be triggered later.
+      setDeferredPrompt(e);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    return () => {
+      clearInterval(timerId);
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
   }, []);
   
+  const handleInstallClick = async () => {
+    if (!deferredPrompt) return;
+    // Show the install prompt
+    deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    const { outcome } = await deferredPrompt.userChoice;
+    // We've used the prompt, and can't use it again, discard it
+    if (outcome === 'accepted') {
+      setDeferredPrompt(null);
+    }
+  };
+
   const activeItem = WORKSPACE_ITEMS.find(item => item.id === activeCategory);
 
   const formatTime = (date: Date) => date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
@@ -57,7 +84,7 @@ const App: React.FC = () => {
                     <img 
                     src="https://i.postimg.cc/8zF3c24h/image.png" 
                     alt="PTB Logo" 
-                    className="h-20 sm:h-24 object-contain drop-shadow-md"
+                    className="h-24 sm:h-30 object-contain drop-shadow-md"
                     />
                     <div className="hidden sm:block text-left">
                          <div className="text-sm font-bold tracking-wide text-white/80">TNHH THƯƠNG MẠI</div>
@@ -119,6 +146,17 @@ const App: React.FC = () => {
             <p className="text-white/40 text-xs tracking-widest uppercase">© 2025 TUẤN BẰNG PACKAGING SYSTEM</p>
         </footer>
       </div>
+
+      {/* Floating Install Button (Visible only when PWA is installable) */}
+      {deferredPrompt && (
+        <button
+            onClick={handleInstallClick}
+            className="fixed bottom-6 right-6 z-40 flex items-center gap-2 px-5 py-3 bg-[#DA291C] text-white rounded-full shadow-[0_4px_20px_rgba(218,41,28,0.4)] hover:bg-[#b01e14] hover:scale-105 transition-all duration-300 animate-fade-in font-semibold border border-white/10"
+        >
+            <span className="material-symbols-outlined">download</span>
+            <span>Cài đặt App</span>
+        </button>
+      )}
 
       {/* Modal for active category */}
       {activeItem && (

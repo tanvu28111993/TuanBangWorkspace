@@ -15,5 +15,6 @@ export const planningData: WorkspaceItem = {
   apps: [
     { id: 'production-schedule', title: 'KH Sản Xuất', icon: <Symbol name="date_range" />, href: APP_LINKS.PLANNING_SCHEDULE },
     { id: 'production-order', title: 'Lệnh Sản Xuất', icon: <Symbol name="assignment" />, href: APP_LINKS.PLANNING_ORDER },
+    { id: 'production-progress', title: 'Tiến Độ Sản Xuất', icon: <Symbol name="timeline" />, href: APP_LINKS.PLANNING_PROGRESS },
   ]
 };

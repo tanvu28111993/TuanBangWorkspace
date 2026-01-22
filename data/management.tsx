@@ -15,5 +15,6 @@ export const managementData: WorkspaceItem = {
   apps: [
     { id: 'materials', title: 'Quản Lý Vật Tư', icon: <Symbol name="inventory_2" />, href: APP_LINKS.MANAGEMENT_MATERIALS },
     { id: 'management-rnd', title: 'Quản lý R&D', icon: <Symbol name="view_in_ar" />, href: APP_LINKS.MANAGEMENT_RND },
+    { id: 'management-progress', title: 'Quản lý Tiến Độ', icon: <Symbol name="timeline" />, href: APP_LINKS.MANAGEMENT_PROGRESS },
   ]
 };
