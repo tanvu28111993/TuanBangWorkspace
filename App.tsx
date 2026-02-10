@@ -3,9 +3,7 @@ import { WorkspaceCard } from './components/WorkspaceCard';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { WorkspaceModal } from './components/WorkspaceModal';
-import { InstallPWAButton } from './components/InstallPWAButton';
 import { useCurrentTime } from './hooks/useCurrentTime';
-import { usePWAInstall } from './hooks/usePWAInstall';
 import { WORKSPACE_ITEMS } from './constants';
 
 const App: React.FC = () => {
@@ -13,7 +11,6 @@ const App: React.FC = () => {
   
   // Custom Hooks
   const { time, formatTime, formatDate, getGreeting } = useCurrentTime();
-  const { deferredPrompt, handleInstallClick } = usePWAInstall();
 
   const activeItem = WORKSPACE_ITEMS.find(item => item.id === activeCategory) || null;
 
@@ -65,11 +62,6 @@ const App: React.FC = () => {
         
         <Footer />
       </div>
-
-      <InstallPWAButton 
-        deferredPrompt={deferredPrompt} 
-        onInstallClick={handleInstallClick} 
-      />
 
       <WorkspaceModal 
         activeItem={activeItem} 

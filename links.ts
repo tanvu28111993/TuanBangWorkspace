@@ -1,12 +1,12 @@
 export const APP_LINKS = {
   // --- QUẢN LÝ (MANAGEMENT) ---
-  MANAGEMENT_MATERIALS: '#',
+  MANAGEMENT_MATERIALS: 'https://quanlyvattu-theta.vercel.app/',
   MANAGEMENT_RND: '#',
   MANAGEMENT_PROGRESS: '#',
 
   // --- NGHIỆP VỤ KHO (WAREHOUSE) ---
   // Kho Giấy
-  WAREHOUSE_PAPER_WEB: '#',
+  WAREHOUSE_PAPER_WEB: 'https://nghiepvukhogiayweb.vercel.app/',
   WAREHOUSE_PAPER_APP: 'https://nghiepvukhogiaym.vercel.app/',
   // Kho Vật Tư
   WAREHOUSE_MATERIAL_WEB: '#',
