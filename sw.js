@@ -3,7 +3,8 @@ const CACHE_NAME = 'ptb-workspace-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/manifest.json'
+  '/manifest.json',
+  'https://i.postimg.cc/8zF3c24h/image.png'
 ];
 
 self.addEventListener('install', (event) => {
