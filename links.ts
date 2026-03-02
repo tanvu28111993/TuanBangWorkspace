@@ -1,6 +1,9 @@
 export const APP_LINKS = {
+  // --- MUA HÀNG (PURCHASING) ---
+  PURCHASING_GENERAL_WAREHOUSE: 'https://tongkhovattu.vercel.app/',
+
   // --- QUẢN LÝ (MANAGEMENT) ---
-  MANAGEMENT_MATERIALS: 'https://quanlyvattu-theta.vercel.app/',
+  MANAGEMENT_MATERIALS: '#',
   MANAGEMENT_RND: '#',
   MANAGEMENT_PROGRESS: '#',
 
