@@ -3,7 +3,7 @@ export const APP_LINKS = {
   PURCHASING_GENERAL_WAREHOUSE: 'https://tongkhovattu.vercel.app/',
 
   // --- QUẢN LÝ (MANAGEMENT) ---
-  MANAGEMENT_MATERIALS: '#',
+  MANAGEMENT_MATERIALS: 'https://quanlyvattu-ten.vercel.app/',
   MANAGEMENT_RND: '#',
   MANAGEMENT_PROGRESS: '#',
 
@@ -38,6 +38,7 @@ export const APP_LINKS = {
 
   // --- KIỂM SOÁT NỘI BỘ (INTERNAL CONTROL) ---
   IC_PAPER_AUDIT: 'https://kiemkekhogiay.vercel.app/',
-  IC_MATERIAL_AUDIT: '#',
+  IC_MATERIAL_AUDIT: 'https://kiemkevattu.vercel.app/',
+  IC_PRODUCT_MOBILE_AUDIT: '#',
   IC_PRODUCT_AUDIT: '#',
 };
